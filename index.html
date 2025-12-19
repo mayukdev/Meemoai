@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="monetag" content="65364111d1edbc5d7ffe582041a7c388">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>MEMMO AI | Next Gen Creation</title>
+    
+    <!-- Fonts & Icons -->
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,400&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+    <style>
+        /* --- 1. LUXURY AESTHETIC SYSTEM (Yellow/White) --- */
+        :root {
+            --primary: #FFD600; /* Memmo Yellow */
+            --primary-hover: #E6C200;
+            --dark: #000000;
+            --text-main: #111111;
+            --text-light: #666666;
+            --surface: #FFFFFF;
+            --surface-alt: #F9F9F9;
+            --glass: rgba(255, 255, 255, 0.8);
+            --border: #EAEAEA;
+            --radius-btn: 50px;
+            --radius-card: 24px;
+            --font: 'Satoshi', sans-serif;
+            --shadow: 0 10px 40px rgba(0,0,0,0.05);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; outline: none; }
+
+        body {
+            background-color: var(--surface);
+            color: var(--text-main);
+            font-family: var(--font);
+            overflow-x: hidden;
+            opacity: 0;
+            animation: pageFadeIn 0.8s ease forwards;
+        }
+
+        @keyframes pageFadeIn { to { opacity: 1; } }
+
+        /* --- 2. NAVIGATION --- */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 24px 30px;
+            position: absolute; top: 0; left: 0; width: 100%;
+            z-index: 100;
+        }
+
+        .brand {
+            font-size: 1.5rem; font-weight: 900; letter-spacing: -1px;
+            display: flex; align-items: center; gap: 5px;
+        }
+        .brand span { color: var(--primary); }
+        .brand-dot { width: 8px; height: 8px; background: var(--primary); border-radius: 50%; }
+
+        /* --- 3. HERO SECTION --- */
+        .hero {
+            min-height: 100vh;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            text-align: center;
+            padding: 100px 20px 40px 20px;
+            position: relative;
+        }
+
+        .badge-new {
+            background: var(--surface-alt); border: 1px solid var(--border);
+            padding: 8px 16px; border-radius: 30px;
+            font-size: 0.85rem; font-weight: 500; color: var(--text-light);
+            margin-bottom: 24px; display: inline-flex; align-items: center; gap: 8px;
+        }
+        .badge-dot { width: 6px; height: 6px; background: var(--primary); border-radius: 50%; box-shadow: 0 0 10px var(--primary); }
+
+        h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            line-height: 1;
+            font-weight: 900;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+            background: linear-gradient(180deg, #000 0%, #333 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p.subtext {
+            font-size: 1.1rem; color: var(--text-light);
+            max-width: 500px; margin: 0 auto 40px auto;
+            line-height: 1.6;
+        }
+
+        /* --- 4. AUTH BUTTONS --- */
+        .auth-container {
+            display: flex; flex-direction: column; gap: 15px;
+            width: 100%; max-width: 350px;
+            margin-bottom: 50px;
+        }
+
+        .btn {
+            width: 100%; padding: 18px;
+            border-radius: var(--radius-btn);
+            font-weight: 700; font-size: 1rem;
+            cursor: pointer; text-decoration: none;
+            display: flex; justify-content: center; align-items: center; gap: 10px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn:active { transform: scale(0.98); }
+
+        .btn-primary {
+            background: var(--primary); color: var(--dark);
+            border: none;
+            box-shadow: 0 10px 30px rgba(255, 214, 0, 0.3);
+        }
+        .btn-primary:hover { background: var(--primary-hover); }
+
+        .btn-secondary {
+            background: var(--dark); color: var(--surface);
+            border: none;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .btn-guest {
+            background: transparent; color: var(--text-light);
+            border: 1px solid var(--border);
+            font-weight: 600; font-size: 0.9rem;
+        }
+        .btn-guest:hover { border-color: var(--dark); color: var(--dark); }
+
+        /* --- 5. AESTHETIC SLIDER --- */
+        .slider-wrapper {
+            width: 100%; overflow: hidden;
+            margin: 0 auto 80px auto;
+            position: relative;
+        }
+        .slider-wrapper::before, .slider-wrapper::after {
+            content: ""; position: absolute; top: 0; width: 100px; height: 100%; z-index: 2;
+        }
+        .slider-wrapper::before { left: 0; background: linear-gradient(to right, var(--surface), transparent); }
+        .slider-wrapper::after { right: 0; background: linear-gradient(to left, var(--surface), transparent); }
+
+        .slider-track {
+            display: flex; gap: 16px;
+            animation: scroll 30s linear infinite;
+            width: max-content;
+        }
+        
+        .slide-card {
+            width: 200px; height: 260px;
+            border-radius: 16px; overflow: hidden;
+            position: relative; flex-shrink: 0;
+        }
+        .slide-card img { width: 100%; height: 100%; object-fit: cover; }
+
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* --- 6. WHY CHOOSE US --- */
+        .features-section {
+            padding: 60px 24px 100px 24px;
+            background: var(--surface-alt);
+            border-top: 1px solid var(--border);
+        }
+        
+        .section-header { margin-bottom: 40px; text-align: left; }
+        .section-header h2 { font-size: 2rem; font-weight: 800; letter-spacing: -1px; margin-bottom: 10px; }
+        .section-header span { color: var(--primary); }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-card {
+            background: var(--surface);
+            padding: 30px;
+            border-radius: var(--radius-card);
+            border: 1px solid var(--border);
+            transition: 0.3s;
+        }
+        .feature-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); border-color: var(--primary); }
+        
+        .icon-box {
+            width: 50px; height: 50px;
+            background: rgba(255, 214, 0, 0.15);
+            color: #D4AF37; /* Darker Yellow/Gold */
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; margin-bottom: 20px;
+        }
+        
+        .feature-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; }
+        .feature-card p { color: var(--text-light); font-size: 0.95rem; line-height: 1.5; }
+
+        /* --- LOADER --- */
+        #loader {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--surface); z-index: 999;
+            display: flex; align-items: center; justify-content: center;
+            transition: opacity 0.5s;
+        }
+        .spinner {
+            width: 40px; height: 40px; border: 4px solid var(--border);
+            border-top-color: var(--primary); border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* --- FOOTER --- */
+        footer {
+            text-align: center; padding: 40px; color: var(--text-light); font-size: 0.8rem;
+            background: var(--surface); border-top: 1px solid var(--border);
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- LOADER -->
+    <div id="loader"><div class="spinner"></div></div>
+
+    <!-- NAV -->
+    <nav>
+        <div class="brand">MEMMO<span>AI</span><div class="brand-dot"></div></div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero">
+        <div class="badge-new">
+            <div class="badge-dot"></div> v2.0 Now Live
+        </div>
+        
+        <h1>Turn Ideas<br>Into <span style="color:var(--primary)">Reality.</span></h1>
+        <p class="subtext">
+            The world's most advanced professional AI image generator. 
+            Create, edit, and reimagine assets in seconds.
+        </p>
+
+        <!-- AUTH BUTTONS -->
+        <div class="auth-container">
+            <a href="sign.html" class="btn btn-primary">
+                Get Started <i class="ri-arrow-right-line"></i>
+            </a>
+            <a href="login.html" class="btn btn-secondary">
+                Login Account
+            </a>
+            <button id="guestBtn" class="btn btn-guest">
+                Try as Guest
+            </button>
+        </div>
+    </header>
+
+    <!-- SLIDER -->
+    <div class="slider-wrapper">
+        <div class="slider-track">
+            <!-- 2x Images to create infinite loop effect -->
+            <div class="slide-card"><img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=500&q=80" alt="AI Art"></div>
+            <div class="slide-card"><img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=500&q=80" alt="Cyberpunk"></div>
+            <div class="slide-card"><img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=500&q=80" alt="Abstract"></div>
+            <div class="slide-card"><img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500&q=80" alt="Liquid"></div>
+            <div class="slide-card"><img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=500&q=80" alt="Neon"></div>
+            <!-- Duplicate for loop -->
+            <div class="slide-card"><img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=500&q=80" alt="AI Art"></div>
+            <div class="slide-card"><img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=500&q=80" alt="Cyberpunk"></div>
+            <div class="slide-card"><img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=500&q=80" alt="Abstract"></div>
+            <div class="slide-card"><img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=500&q=80" alt="Liquid"></div>
+            <div class="slide-card"><img src="https://images.unsplash.com/photo-1614728853913-1e221165659e?w=500&q=80" alt="Neon"></div>
+        </div>
+    </div>
+
+    <!-- WHY CHOOSE US -->
+    <section class="features-section">
+        <div class="section-header">
+            <h2>Why Choose <br><span>MEMMO AI?</span></h2>
+        </div>
+
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="icon-box"><i class="ri-speed-line"></i></div>
+                <h3>Lightning Fast</h3>
+                <p>Generate high-fidelity images in milliseconds using our proprietary Flux engine.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon-box"><i class="ri-hd-line"></i></div>
+                <h3>8K Resolution</h3>
+                <p>Crystal clear details optimized for professional printing and digital use.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon-box"><i class="ri-shield-keyhole-line"></i></div>
+                <h3>Secure & Private</h3>
+                <p>Your creations are yours. Enterprise-grade security for your intellectual property.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon-box"><i class="ri-smartphone-line"></i></div>
+                <h3>Mobile First</h3>
+                <p>A native-app experience directly in your browser. Design anywhere, anytime.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 MEMMO AI Corporation. All rights reserved.</p>
+    </footer>
+
+    <!-- FIREBASE SDK -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
+        import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-analytics.js";
+
+        // CONFIG
+        const firebaseConfig = {
+            apiKey: "AIzaSyCFO52rLRGEnShtgvV3Ggqi2vzy8DJmz_c",
+            authDomain: "meemo-776b6.firebaseapp.com",
+            databaseURL: "https://meemo-776b6-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "meemo-776b6",
+            storageBucket: "meemo-776b6.firebasestorage.app",
+            messagingSenderId: "941034762844",
+            appId: "1:941034762844:web:de6ab7abfde47c1ff4ec99",
+            measurementId: "G-7L15DGQNB4"
+        };
+
+        // INIT
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        const auth = getAuth(app);
+
+        // UI LOGIC
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').style.opacity = '0';
+                setTimeout(() => document.getElementById('loader').style.display = 'none', 500);
+            }, 800);
+        });
+
+        // GUEST LOGIN HANDLER
+        const guestBtn = document.getElementById('guestBtn');
+        
+        guestBtn.addEventListener('click', async () => {
+            guestBtn.innerHTML = '<i class="ri-loader-4-line"></i> Accessing...';
+            guestBtn.style.opacity = '0.7';
+            
+            try {
+                // Anonymous Sign In
+                await signInAnonymously(auth);
+                console.log("Guest Logged In");
+                
+                // Redirect to Main App
+                // Ensure you have a file named 'app.html' or change this to your main generator file
+                window.location.href = "home.html"; 
+            } catch (error) {
+                console.error(error);
+                alert("Login Error: " + error.message);
+                guestBtn.innerHTML = 'Try as Guest';
+                guestBtn.style.opacity = '1';
+            }
+        });
+
+    </script>
+</body>
+</html>
